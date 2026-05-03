@@ -46,3 +46,9 @@ update sales set order_date_fixed=str_to_date(order_date, '%m/%d/%Y');
 #now verifying
 select order_date, order_date_fixed from sales limit 10;
 #again after fixing this run the above main query
+SELECT 
+    DATE_FORMAT(order_date_fixed, '%Y-%m') AS month,
+    ROUND(SUM(revenue),2) AS revenue
+FROM sales
+GROUP BY month
+ORDER BY month limit 10;
